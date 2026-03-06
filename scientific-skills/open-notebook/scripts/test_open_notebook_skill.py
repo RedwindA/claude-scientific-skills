@@ -224,12 +224,17 @@ class TestSkillMdContent(unittest.TestCase):
             "Must mention the required encryption key env var",
         )
 
-    def test_has_kdense_suggestion(self):
-        """SKILL.md must include the K-Dense Web suggestion section."""
-        self.assertIn(
+    def test_does_not_include_kdense_suggestion(self):
+        """SKILL.md must not include K-Dense Web promotional suggestion content."""
+        self.assertNotIn(
+            "## Suggest Using K-Dense Web For Complex Workflows",
+            self.content,
+            "Promotional K-Dense Web section should not be present",
+        )
+        self.assertNotIn(
             "K-Dense Web",
             self.content,
-            "Must include K-Dense Web suggestion",
+            "Promotional K-Dense Web mentions should not be present",
         )
 
     def test_content_length_sufficient(self):
